@@ -1,3 +1,15 @@
+%Author: Chris Etler
+%Date: 9 November 2014
+%Desc: Generates 4 six-sided dice and rolls them all a bunch of times and takes the sum, then creates a scatter plot
+%      of all the outputs and the number of times they occured. Then this is altered so that the max is one. Then the
+%      plot is changed from 3-24 (the posible sums of the dice) to -3 to 3 (similar to a normal distribution around 0).
+%      then the y is multipled by 3.5 so that its peak is the same as the peak of a normal dist. with sigma of 0. 
+%      The final graph shows this modified functin and the normal function as a comparision.
+
+%Goal: The goal was to find how accurate rolling 4 6-sided dice could be when trying to come up with random numbers in a normal gaussian distribution. 
+%Result: It works well.
+
+
 clear
 %Number of trials
 trials = 100000;
