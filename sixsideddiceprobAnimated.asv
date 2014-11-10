@@ -14,25 +14,16 @@ frameNum = 0;
 for trials = [100,1000,100000,1000000];
     %this is the number of 6-sided dice we will use
     for nDice = 1:1:10;
-        %The range of possible sums. The minimum is each dice is 1, so
-        %nDice, the max is each dice is 6, so 6*nDice
         x = nDice:6*nDice;
-        %Y is the matrix for each time each of the values occurs. 
         yMax = 5*nDice+1;
         y1 = zeros(1,yMax);
-        
-        %rolls the dice and adds to the proper y(n), where x(n) = to the
-        %current roll
         for i = 1:1:trials;
             %for trials# of cases
             roll=0;
-            %roll n number of 6-sided dice and add them to get the current
-            %roll
             for k = 1:1:nDice;
                 roll = roll + ceil(rand*6);
             end
-            
-            %find where that roll is on the x-axis and add to the sum 
+            %roll = ceil(rand*6)+ceil(rand*6)+ceil(rand*6)+ceil(rand*6); %number between 1 and 6, twice (Add two dice)
             for j = 1:1:yMax;
                 if roll == x(j);
                     y1(j) = y1(j)+1;
@@ -43,9 +34,8 @@ for trials = [100,1000,100000,1000000];
         end
         %Creates the Plots
         y1 = y1./trials; %makes all probability between 0 and 1
-        
-        %creates the graph
         scatter(x,y1);
+
         txtOut = strcat('Number of Dice:', num2str(nDice));
         txtOut = strcat(txtOut,' Number of trials:');
         txtOut = strcat(txtOut,num2str(trials));
@@ -53,7 +43,7 @@ for trials = [100,1000,100000,1000000];
         xlabel('Sum of Dice');
         ylabel('Probability');
         
-        %----Rest of animation script
+        %Make sure we actually get plotted
         drawnow;
         %save current frame
         frame = getframe(fh);
@@ -70,14 +60,15 @@ for trials = [100,1000,100000,1000000];
         end
         %So we know which frame we're on
         frameNum = frameNum + 1;
-        %----\
         %pause
     end
 end
-%Added to make the last from last a few more seconds
 imwrite(imind,cm,video_filename,'gif','WriteMode','append','DelayTime',6/gif_fps);
 
 
+
+var1 = 1/(sqrt(2*pi));
+e = exp(1);
 
 
 
